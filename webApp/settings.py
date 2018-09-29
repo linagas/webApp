@@ -25,7 +25,7 @@ SECRET_KEY = '074uxm(s(n4%z3#v5pjvrz30c2lg5d&d29@!s12%1=css1r7%q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','linagas.pythonanywhere.com']
 
 
 # Application definition
