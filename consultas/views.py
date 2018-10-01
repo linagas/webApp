@@ -16,7 +16,7 @@ class ConsultarSebif(View):
     
     def get_context(self, request):
         context = {}
-        response = requests.get('https://api.sbif.cl/api-sbifv3/recursos_api/uf/?apikey=551dd58d90fca467536cde1c80dc3728d7030876&formato=json')
+        response = requests.get('http://api.sbif.cl/api-sbifv3/recursos_api/uf/?apikey=551dd58d90fca467536cde1c80dc3728d7030876&formato=json')
         data = response.json()
         context['uf'] = data['UFs']
         context['dolares'] = {}
