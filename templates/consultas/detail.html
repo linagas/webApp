@@ -45,7 +45,7 @@
             <div data-spy="scroll">
                 <ul class="list-group">
                     {% for u, d in ufs.UFs|zip:dolares %}
-                        <li class="list-group-item">
+                        <li class="list-group-item ufs-val"  data-last-date="{{u.Fecha}}" >
                             <p>  UF:<strong>{{u.Valor}}</strong> CLP al <strong>{{u.Fecha}}</strong>
                                 valor del dolar a la fecha <strong> {{d.Valor}} </strong>
                             </p>
@@ -60,6 +60,12 @@
                 <li class="list-group-item"> el valor minimo entre la fecha seleccionada es <strong>{{min_val.Valor}} CLP</strong> </li>
                 <li class="list-group-item"> el valor promedio entre la fecha seleccionada es  <strong> {{media}} CLP</strong></li>
             </ul>
+        </div>
+        <div class="col">
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+        <div class="col">
+            <div id="chartdiv" data-last-value="{{ufs.UFs}}"></div>
         </div>
     </div>
 </div
