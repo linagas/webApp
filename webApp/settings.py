@@ -25,7 +25,7 @@ SECRET_KEY = '074uxm(s(n4%z3#v5pjvrz30c2lg5d&d29@!s12%1=css1r7%q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','linagas.pythonanywhere.com','http://ec2-52-67-200-105.sa-east-1.compute.amazonaws.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','linagas.pythonanywhere.com','ec2-52-67-200-105.sa-east-1.compute.amazonaws.com']
 
 
 # Application definition
