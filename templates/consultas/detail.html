@@ -1,0 +1,70 @@
+{% extends "consultas/home.html" %}
+{% load custom_tags %}
+
+{% block main_content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form method="post" action="{% url 'detail' %}">
+                {% csrf_token %}	
+                <div >
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="uf" name="filter" hidden checked id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                       Consulte el valor de la UF
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="col">
+                                <input type="date" name="desde" class="form-control" placeholder="Fecha Desde">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Fecha Desde
+                                </label>
+                            </div>
+                            <div class="col">
+                                <input type="date" name="hasta" class="form-control" placeholder="Fecha Hasta">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Fecha Desde
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit">Ver</button>
+                        </div>
+                    </div>
+                </div>	
+            </form>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+            <div data-spy="scroll">
+                <ul class="list-group">
+                    {% for u, d in ufs.UFs|zip:dolares %}
+                        <li class="list-group-item">
+                            <p>  UF:<strong>{{u.Valor}}</strong> CLP al <strong>{{u.Fecha}}</strong>
+                                valor del dolar a la fecha <strong> {{d.Valor}} </strong>
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <ul class="list-group">
+                <li class="list-group-item"> el valor maximo entre la fecha seleccionada es <strong>{{max_val.Valor}} CLP</strong> </li>
+                <li class="list-group-item"> el valor minimo entre la fecha seleccionada es <strong>{{min_val.Valor}} CLP</strong> </li>
+                <li class="list-group-item"> el valor promedio entre la fecha seleccionada es  <strong> {{media}} CLP</strong></li>
+            </ul>
+        </div>
+    </div>
+</div
+{% endblock %}
+
+
+
+

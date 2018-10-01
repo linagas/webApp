@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8"/>
+	<title>aplicación web que permita obtener el valor de la UF y el d&oacute;lar.</title>
+	<meta name="Home off my test frontend" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<!--Links static-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
+</head>
+<body class="container_fluid">
+	<header>
+		<div id="titular">
+			<h1 class="titulo">
+				Desafío Tecnología Área de Desarrollo
+			</h1>
+			<p class="fecha"> Hasta la fecha <strong> UF: </strong>{{uf.0.Valor}} CLP
+			</p>
+		</div>
+	</header>
+	<section class="post container-fluid">
+		<article class="post">
+				<div class="container">
+					{% block main_content %}
+					{% endblock %}
+				</div>
+			
+		</article>
+	</section>
+	<footer>
+			<div class="detalles">
+				<p class="autor">
+					By  API-SBIF.v3/<a href="https://www.sbif.cl">Para mas informaci&oacute;n visite principal del sitio web SBIF</a>
+				</p>
+			</div>
+		<h3>
+			<strong>Power by LI</strong>
+		</h3>
+	</footer>
+	{% load static %}
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="path/to/chartjs/dist/Chart.js"></script>
+	<script src="{% static 'app.js' %}"></script>
+
+
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-XXXXX-Y', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+</body>
+</html>

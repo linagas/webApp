@@ -1,0 +1,36 @@
+<form method="post" action="{% url 'detail' %}">
+        {% csrf_token %}	
+        <div >
+            <div class="row">
+                <div class="col-sm">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="uf" name="filter" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                UF
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="uf" name="filter" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Dolar
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="col">
+                        <input type="date" name="desde" class="form-control" placeholder="Fecha Desde">
+                    </div>
+                    <div class="col">
+                        <input type="date" name="hasta" class="form-control" placeholder="Fecha Hasta">
+                    </div>
+                </div>
+                <div>
+                    <button type="submit">Ver</button>
+                </div>
+            </div>
+        </div>	
+    </form>
