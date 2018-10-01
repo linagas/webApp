@@ -1,12 +1,13 @@
 console.log('js')
-var dataUf =$( "#chartdiv" ).data( "lastValue" )
+var dataUf =$( "#chartdiv" ).data( "lastValue" ).replace('[','').replace(']','');
 console.log(dataUf);
+console.log(typeof(dataUf));
 for (var prop in dataUf) {
     // skip loop if the property is from prototype
-    if(!obj.hasOwnProperty(prop)) continue;
+    if(!dataUf.hasOwnProperty(prop)) continue;
 
     // your code
-    alert(prop + " = " + obj[prop]);
+    console.log(prop + " = " + dataUf[prop]);
 }
 var chart = AmCharts.makeChart( "chartdiv", {
     "type": "serial",

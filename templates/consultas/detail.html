@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form method="post" action="{% url 'detail' %}">
+            <form id="formFechas" method="post" action="{% url 'detail' %}">
                 {% csrf_token %}	
                 <div >
                     <div class="row">
@@ -20,21 +20,21 @@
                             </div>
                         </div>
                         <div class="col-sm">
-                            <div class="col">
-                                <input type="date" name="desde" class="form-control" placeholder="Fecha Desde">
+                            <div class="row">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Fecha Desde
                                 </label>
+                                <input type="date" name="desde" class="form-control" placeholder="Fecha Desde">
                             </div>
                             <div class="col">
-                                <input type="date" name="hasta" class="form-control" placeholder="Fecha Hasta">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Fecha Desde
                                 </label>
+                                <input type="date" name="hasta" class="form-control" placeholder="Fecha Hasta">
                             </div>
                         </div>
                         <div>
-                            <button type="submit">Ver</button>
+                            <a id="send-data" class="btn btn-info">Info</a>
                         </div>
                     </div>
                 </div>	
@@ -65,7 +65,7 @@
             <canvas id="myChart" width="400" height="400"></canvas>
         </div>
         <div class="col">
-            <div id="chartdiv" data-last-value="{{ufs.UFs}}"></div>
+            <div id="chartdiv" data-last-value="ufs.UFs"></div>
         </div>
     </div>
 </div
