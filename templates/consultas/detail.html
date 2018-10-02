@@ -2,74 +2,86 @@
 {% load custom_tags %}
 
 {% block main_content %}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <form id="formFechas" method="post" action="{% url 'detail' %}">
-                {% csrf_token %}	
-                <div >
-                    <div class="row">
-                        <div class="col-sm">
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="uf" name="filter" hidden checked id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                       Consulte el valor de la UF
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm">
-                            <div class="row">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Fecha Desde
-                                </label>
-                                <input type="date" name="desde" class="form-control" placeholder="Fecha Desde">
-                            </div>
-                            <div class="col">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Fecha Desde
-                                </label>
-                                <input type="date" name="hasta" class="form-control" placeholder="Fecha Hasta">
-                            </div>
-                        </div>
-                        <div>
-                            <a id="send-data" class="btn btn-info">Info</a>
-                        </div>
-                    </div>
-                </div>	
-            </form>
-        </div>
-        <div class="w-100"></div>
-        <div class="col">
-            <div data-spy="scroll">
-                <ul class="list-group">
-                    {% for u, d in ufs.UFs|zip:dolares %}
-                        <li class="list-group-item ufs-val"  data-last-date="{{u.Fecha}}" >
-                            <p>  UF:<strong>{{u.Valor}}</strong> CLP al <strong>{{u.Fecha}}</strong>
-                                valor del dolar a la fecha <strong> {{d.Valor}} </strong>
-                            </p>
-                        </li>
-                    {% endfor %}
-                </ul>
+<div class="row rounded-bottom form-base">
+    <form id="formFechas" method="post" action="{% url 'detail' %}">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="uf" name="filter" hidden checked id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Consulte el valor de la UF
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm">
+                <label class="form-check-label" for="defaultCheck1">
+                    Fecha Desde
+                </label>
+                <input type="date" name="desde" value="{{desde}}" class="form-control" placeholder="Fecha Desde">
+            </div>
+            <div class="col-sm">
+                <label class="form-check-label" value="{{hasta}}" for="defaultCheck1">
+                    Fecha Desde
+                </label>
+                <input type="date" name="hasta" class="form-control" placeholder="Fecha Hasta">
+            </div>
+            <div class="col-sm">
+                <div>
+                    <button type="submit" class="btn btn-info btn-ver"> Ver</button>
+                </div>
             </div>
         </div>
-        <div class="col">
-            <ul class="list-group">
+    </form>
+</div>
+
+<div class="container-fluid">
+        <div class="row">
+          <div class="col-sm">
+                {% if max_val %}
                 <li class="list-group-item"> el valor maximo entre la fecha seleccionada es <strong>{{max_val.Valor}} CLP</strong> </li>
+            {% endif%}
+          </div>
+          <div class="col-sm">
+                {% if min_val %}
                 <li class="list-group-item"> el valor minimo entre la fecha seleccionada es <strong>{{min_val.Valor}} CLP</strong> </li>
+                {% endif%}
+          </div>
+          <div class="col-sm">
+                {% if media %}
                 <li class="list-group-item"> el valor promedio entre la fecha seleccionada es  <strong> {{media}} CLP</strong></li>
-            </ul>
+                {% endif%}
+          </div>
         </div>
-        <div class="col">
-            <canvas id="myChart" width="400" height="400"></canvas>
+      </div>
+<div class="row">
+        <div class="col-8">
+            <div class="row">
+                <div id="chartdiv" data-last-value="{{ufs}}"></div>
+            </div>
+            <div class="row">
+                <div id="dolardiv" data-dolar-value="{{dolares}}"></div>
+            </div>
         </div>
-        <div class="col">
-            <div id="divData">{{ufs.UFs}}</div>
-            <div id="chartdiv"></div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col">
+                    <div data-spy="scroll">
+                        <ul class="list-group">
+                            {% for u,d in ufs|zip:dolares %}
+                                <li class="list-group-item ufs-val" data-last-value="{{u}}">
+                                    <p>  UF:<strong>{{u.Valor}}</strong> CLP al <strong>{{u.Fecha}}</strong>
+                                        valor del dolar a la fecha <strong> {{d.Valor}} </strong>
+                                    </p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>       
         </div>
-    </div>
-</div
+</div>
+
 {% endblock %}
 
 

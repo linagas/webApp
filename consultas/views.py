@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, render_to_response, redirect, get_object_or_404
 from django.views.generic import View
+import json
 import datetime
 import requests
 
@@ -20,6 +21,9 @@ class ConsultarSebif(View):
         data = response
         context['uf'] = data['UFs']
         context['dolares'] = {}
+        context['time'] =  datetime.datetime.now()
+        context['desde'] = datetime.datetime.now().strftime('%d/%m/%Y')
+        context['hasta'] = datetime.datetime.now().strftime('%d/%m/%Y')
         return context
 
     def get(self, request, *args, **kwargs):
@@ -37,6 +41,8 @@ class ConsultarSebif(View):
         desde_ = datetime.datetime.strptime(desde, "%Y-%m-%d") if desde else None
         hasta = request.POST.get('hasta',None)
         hasta_ = datetime.datetime.strptime(hasta, "%Y-%m-%d") if hasta else None
+        context['desde'] = desde_
+        context['hasta'] = hasta_
 
         if filter_ == 'uf':
             if desde and hasta:
@@ -92,8 +98,8 @@ class ConsultarSebif(View):
                     min_val = self.min_value_from_period(uf_list['UFs'])
                     context['min_val'] = min_val
                     dolares = [self.get_dolar_for_day(x['Fecha']) for x in uf_list['UFs']]
-                    context['dolares'] = dolares if dolares else {}
-            context['ufs'] = response.json()
+                    context['dolares'] = json.dumps(dolares,ensure_ascii=False) if dolares else {}
+            context['ufs'] = json.dumps(response.json()['UFs'],ensure_ascii=False)
         except Exception as e:
             print(e)
         
@@ -107,8 +113,8 @@ class ConsultarSebif(View):
                 min_val = self.min_value_from_period(uf_list['UFs'])
                 context['min_val'] = min_val
                 dolares = [self.get_dolar_for_day(x['Fecha']) for x in uf_list['UFs']]
-                context['dolares'] = dolares if dolares else {}
-            context['ufs'] = response.json()
+                context['dolares'] = json.dumps(dolares,ensure_ascii=False) if dolares else {}
+            context['ufs'] = json.dumps(response.json()['UFs'],ensure_ascii=False)
         except Exception as e:
             print(e)
 
@@ -124,9 +130,7 @@ class ConsultarSebif(View):
                 media = self.promedio_from_period(uf_list['UFs'])
                 context['media'] = media
                 dolares = [self.get_dolar_for_day(x['Fecha']) for x in uf_list['UFs']]
-                context['dolares'] = dolares if dolares else {}
-            context['ufs'] = response.json()
+                context['dolares'] = json.dumps(dolares,ensure_ascii=False) if dolares else {}
+            context['ufs'] = json.dumps(response.json()['UFs'],ensure_ascii=False)
         except Exception as e:
             print(e)
-        
-
