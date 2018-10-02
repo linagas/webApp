@@ -39,17 +39,17 @@
         <div class="row">
           <div class="col-sm">
                 {% if max_val %}
-                <li class="list-group-item"> el valor maximo entre la fecha seleccionada es <strong>{{max_val.Valor}} CLP</strong> </li>
+                <li class="list-group-item"> El valor maximo de la <em>UF.</em> entre la fecha seleccionada es <strong>{{max_val.Valor}} CLP</strong> </li>
             {% endif%}
           </div>
           <div class="col-sm">
                 {% if min_val %}
-                <li class="list-group-item"> el valor minimo entre la fecha seleccionada es <strong>{{min_val.Valor}} CLP</strong> </li>
+                <li class="list-group-item"> El valor minimo de la <em>UF.</em> entre la fecha seleccionada es <strong>{{min_val.Valor}} CLP</strong> </li>
                 {% endif%}
           </div>
           <div class="col-sm">
                 {% if media %}
-                <li class="list-group-item"> el valor promedio entre la fecha seleccionada es  <strong> {{media}} CLP</strong></li>
+                <li class="list-group-item"> El valor promedio de la <em>UF.</em> entre la fecha seleccionada es  <strong> {{media}} CLP</strong></li>
                 {% endif%}
           </div>
         </div>
@@ -70,8 +70,13 @@
                         <ul class="list-group">
                             {% for u,d in ufs|zip:dolares %}
                                 <li class="list-group-item ufs-val" data-last-value="{{u}}">
-                                    <p>  UF:<strong>{{u.Valor}}</strong> CLP al <strong>{{u.Fecha}}</strong>
-                                        valor del dolar a la fecha <strong> {{d.Valor}} </strong>
+                                    <p>
+                                        <h5>
+                                            El valor de la UF:<strong>{{u.Valor}}</strong> CLP al <strong>{{u.Fecha}}</strong>
+                                            <small class="text-muted">
+                                                El dolar correspondiente a la fecha <strong> {{d.Valor}} </strong>
+                                            </small>
+                                        </h5>  
                                     </p>
                                 </li>
                             {% endfor %}

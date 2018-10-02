@@ -8,6 +8,9 @@ for (var prop in dataUf) {
 var chart = AmCharts.makeChart( "chartdiv", {
     "type": "serial",
     "theme": "light",
+    "titles": [{
+        "text": "Graficas UF."
+      }],
     "dataProvider": dataUf,
     "valueAxes": [ {
       "gridColor": "#FFFFFF",
@@ -54,6 +57,9 @@ var chart = AmCharts.makeChart( "chartdiv", {
   var chart2 = AmCharts.makeChart( "dolardiv", {
     "type": "serial",
     "theme": "light",
+    "titles": [{
+        "text": "Graficas Dolar."
+      }],
     "dataProvider": dataDolar,
     "valueAxes": [ {  "gridColor": "#FFFFFF",
       "gridAlpha": 0.2,
