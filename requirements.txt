@@ -7,7 +7,7 @@ idna==2.7
 pip==18.0
 post==1.0.2
 public==1.0.3
-Pygments==2.2.0
+Pygments==2.7.4
 pytz==2018.5
 query-string==1.0.2
 request==1.0.2
